@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+
+	<!-- context-param是上下文參數(他屬於整個web工程) -->
+	<context-param>
+		<param-name>username</param-name>
+		<param-value>context</param-value>
+	</context-param>
+		<context-param>
+		<param-name>password</param-name>
+		<param-value>root</param-value>
+	</context-param>
+
+
+	<!-- servlet標籤給Tomcat配置Servlet程序 -->
+	<servlet>
+		<!-- servlet-name標籤 給servlet程序起一個別名(一般是類名) -->
+		<servlet-name>HelloServlet</servlet-name>
+		<!-- servlet-class是servlet程序的全類名 -->
+		<!-- com\atguigu\test\HelloServlet.java -->
+		<servlet-class>com.atguigu.test.HelloServlet</servlet-class>
+		<!-- init-param是初始化參務 -->
+		<init-param>
+			<!-- 參數名 -->
+			<param-name>url</param-name>
+			<!-- 參數值 -->
+			<param-value>jdbc:mssql://locahost:3306.test</param-value>
+		</init-param>
+		<init-param>
+			<param-name>username</param-name>
+			<param-value>root</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<!-- servlet-name標籤的作業是告註服務器，我當前配置的地址給哪個servlet程序使用 -->
+		<servlet-name>HelloServlet</servlet-name>
+		<!-- url-pattern標籤配置訪問地址<br/> / 斜槓表：在服務器解析的時後，表示地址為：http://ip:port/工程路徑 
+			/hello /http://ip:port/工程路徑/hello <br/> -->
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>HelloServlet2</servlet-name>
+		<servlet-class>com.atguigu.test.HelloServlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet2</servlet-name>
+		<url-pattern>/hello2</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ContextServlet</servlet-name>
+		<servlet-class>com.atguigu.test.ContextServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContextServlet</servlet-name>
+		<url-pattern>/contextServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>HelloServler3</servlet-name>
+		<servlet-class>com.atguigu.test.HelloServlet3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServler3</servlet-name>
+		<url-pattern>/hello3</url-pattern>
+	</servlet-mapping>
+	<!-- <display-name>WebPro1_1</display-name> <welcome-file-list> <welcome-file>index.html</welcome-file> 
+		<welcome-file>index.htm</welcome-file> <welcome-file>index.jsp</welcome-file> 
+		<welcome-file>default.html</welcome-file> <welcome-file>default.htm</welcome-file> 
+		<welcome-file>default.jsp</welcome-file> </welcome-file-list> -->
+</web-app>
+
